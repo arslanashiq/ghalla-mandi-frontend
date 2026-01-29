@@ -1,42 +1,40 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
+/* Margin Start (ms-*) */
+.ms-0 { margin-inline-start: 0 !important; }
+.ms-1 { margin-inline-start: 0.25rem !important; }
+.ms-2 { margin-inline-start: 0.5rem !important; }
+.ms-3 { margin-inline-start: 1rem !important; }
+.ms-4 { margin-inline-start: 1.5rem !important; }
+.ms-5 { margin-inline-start: 3rem !important; }
+
+/* Margin End (me-*) */
+.me-0 { margin-inline-end: 0 !important; }
+.me-1 { margin-inline-end: 0.25rem !important; }
+.me-2 { margin-inline-end: 0.5rem !important; }
+.me-3 { margin-inline-end: 1rem !important; }
+.me-4 { margin-inline-end: 1.5rem !important; }
+.me-5 { margin-inline-end: 3rem !important; }
+
+
+/* Padding Start (ps-*) */
+.ps-0 { padding-inline-start: 0 !important; }
+.ps-1 { padding-inline-start: 0.25rem !important; }
+.ps-2 { padding-inline-start: 0.5rem !important; }
+.ps-3 { padding-inline-start: 1rem !important; }
+.ps-4 { padding-inline-start: 1.5rem !important; }
+.ps-5 { padding-inline-start: 3rem !important; }
+
+/* Padding End (pe-*) */
+.pe-0 { padding-inline-end: 0 !important; }
+.pe-1 { padding-inline-end: 0.25rem !important; }
+.pe-2 { padding-inline-end: 0.5rem !important; }
+.pe-3 { padding-inline-end: 1rem !important; }
+.pe-4 { padding-inline-end: 1.5rem !important; }
+.pe-5 { padding-inline-end: 3rem !important; }
+
