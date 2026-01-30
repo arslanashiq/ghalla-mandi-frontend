@@ -5,12 +5,19 @@ import { Card, CardContent, Typography, Button, Box } from "@mui/material";
 // components
 import CustomTextField from "@/components/form/CustomTextField";
 import PageContainer from "@/components/Layout/PageContainer";
+import { useForm } from "react-hook-form";
 
 function LoginPage() {
   const router = useRouter();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const { register, handleSubmit } = useForm({
+    values: {
+      email: "admin",
+      password: "admin",
+    },
+  });
+
+  const handleLogin = () => {
     router.replace("/home");
   };
   return (
@@ -45,13 +52,20 @@ function LoginPage() {
           <Box
             component="form"
             sx={{ mt: 2, display: "flex", flexDirection: "column", gap: 4 }}
-            onSubmit={handleLogin}
+            onSubmit={handleSubmit(handleLogin)}
           >
-            <CustomTextField label="Email" placeholder="Email" />
+            <CustomTextField
+              label="Email"
+              placeholder="Email"
+              name="email"
+              register={register}
+            />
             <CustomTextField
               label="Password"
               type="password"
               placeholder="passowrd"
+              name="password"
+              register={register}
             />
             <Button className="fw-bold" type="submit">
               Sign In

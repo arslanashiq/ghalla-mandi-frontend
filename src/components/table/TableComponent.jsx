@@ -18,6 +18,7 @@ import { useForm, useWatch } from "react-hook-form";
 import TuneIcon from "@mui/icons-material/Tune";
 // store
 import useCommon from "@/store/common";
+import { useRouter } from "next/navigation";
 
 export default function TableComponent({
   size = "small",
@@ -33,6 +34,7 @@ export default function TableComponent({
   handleSelectSingleRow = () => {},
   isRowSelected = () => {},
 }) {
+  const router = useRouter();
   const navBarHeight = useCommon((state) => state.common.navBarHeight);
 
   const { control, setValue } = useForm({
@@ -151,7 +153,9 @@ export default function TableComponent({
                   onDragOver={(e) => e.preventDefault()}
                   onDrop={(e) => handleDrop(e, index)}
                 >
-                  {cell.label}
+                  {cell.renderTableHeadCell
+                    ? cell.renderTableHeadCell({ cell, router })
+                    : cell.label}
                 </TableCell>
               ))}
               {showColumnHideAndShowButton && (
@@ -181,7 +185,9 @@ export default function TableComponent({
                 )}
                 {visibleHeadCells.map((cell) => (
                   <TableCell key={cell.id || cell.label}>
-                    {row?.[cell?.id] || ""}
+                    {cell?.renderTableBodyCell
+                      ? cell.renderTableBodyCell({ row, cell, router })
+                      : row?.[cell?.id] || ""}
                   </TableCell>
                 ))}
                 {showColumnHideAndShowButton && <TableCell />}

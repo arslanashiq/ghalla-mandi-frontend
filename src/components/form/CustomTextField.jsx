@@ -6,16 +6,19 @@ function CustomTextField({
   label = "",
   type = "text",
   placeholder = "",
-  register = null,
+  register = () => {},
   required = false,
   error = false,
   helperText = "",
   slotProps = {},
   size = "small",
   color = "primary",
+  name = "",
 }) {
   return (
     <TextField
+      id={name}
+      {...register(name || "")}
       color={color}
       type={type}
       label={label}

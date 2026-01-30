@@ -2,7 +2,7 @@ import { Dashboard, People, AccountBalance, Person } from "@mui/icons-material";
 
 const defaultAppProps = {
   color: "primary",
-  sx: { fontSize: 50 },
+  sx: { fontSize: 40 },
 };
 export const DEFAULT_APPS = [
   {

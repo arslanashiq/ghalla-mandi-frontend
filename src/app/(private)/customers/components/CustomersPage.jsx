@@ -132,7 +132,7 @@ function CustomersPage() {
     },
   ];
   const headCells = [
-    { label: "Name", id: "name", visible: true },
+    { label: "Name", id: "name", visible: false },
     { label: "Age", id: "age", visible: true },
     { label: "Email", id: "email", visible: true },
     { label: "Phone Number", id: "phone", visible: true },
