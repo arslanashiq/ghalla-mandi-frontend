@@ -45,6 +45,13 @@ function useTableHook({ count, data }) {
     }
     setValue("offset", newOffset);
   };
+  const isRowSelected = (row) => {
+    try {
+      return selectedRows.findIndex((r) => r.id === row.id) >= 0 ? true : false;
+    } catch (error) {
+      return false;
+    }
+  };
 
   return {
     offset,
@@ -57,6 +64,7 @@ function useTableHook({ count, data }) {
     //
     handleNextPage,
     handlePreviousPage,
+    isRowSelected,
   };
 }
 

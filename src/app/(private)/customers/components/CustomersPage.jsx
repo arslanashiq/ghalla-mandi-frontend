@@ -150,6 +150,7 @@ function CustomersPage() {
     handleSelectSingleRow,
     handleNextPage,
     handlePreviousPage,
+    isRowSelected,
   } = useTableHook({ count, data });
 
   return (
@@ -170,14 +171,17 @@ function CustomersPage() {
       </NavBar>
 
       <TableComponent
+        data={data}
+        headCells={headCells}
+        selectedRows={selectedRows}
+        //
         showCheckbox
         stickyHeader
         showColumnHideAndShowButton
-        headCells={headCells}
-        data={data}
-        selectedRows={selectedRows}
+        //
         handleSelectAll={handleSelectAll}
         handleSelectSingleRow={handleSelectSingleRow}
+        isRowSelected={isRowSelected}
       />
     </PageContainer>
   );

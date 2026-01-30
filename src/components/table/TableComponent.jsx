@@ -1,34 +1,23 @@
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import {
+  Paper,
+  TableRow,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
   Box,
   Checkbox,
   Divider,
   IconButton,
   Menu,
-  MenuItem,
   Typography,
 } from "@mui/material";
-import TuneIcon from "@mui/icons-material/Tune";
-import useCommon from "@/store/common";
 import { useForm, useWatch } from "react-hook-form";
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
+// icons
+import TuneIcon from "@mui/icons-material/Tune";
+// store
+import useCommon from "@/store/common";
 
 export default function TableComponent({
   size = "small",
@@ -42,6 +31,7 @@ export default function TableComponent({
   selectedRows = [],
   handleSelectAll = () => {},
   handleSelectSingleRow = () => {},
+  isRowSelected = () => {},
 }) {
   const navBarHeight = useCommon((state) => state.common.navBarHeight);
 
@@ -55,7 +45,7 @@ export default function TableComponent({
   const customHeadCells = useWatch({ control, name: "headCells" });
   const visibleHeadCells = customHeadCells.filter((cell) => cell.visible);
 
-  //
+  // hide and show Column
   const anchorEl = useWatch({ control, name: "anchorEl" });
 
   const handleCloseMenu = () => {
@@ -70,12 +60,7 @@ export default function TableComponent({
     setValue(`headCells.${index}.visible`, e.target.checked);
   };
 
-  //
-
-  const handleDragStart = (e, index) => {
-    e.dataTransfer.setData("text/plain", index);
-  };
-
+  // Drag and Drop logic
   const swapColumns = (sourceIndex, destinationIndex) => {
     if (sourceIndex === destinationIndex) return;
     if (sourceIndex < 0 || destinationIndex < 0) return;
@@ -94,18 +79,15 @@ export default function TableComponent({
 
     setValue("headCells", newColumns);
   };
+
+  const handleDragStart = (e, index) => {
+    e.dataTransfer.setData("text/plain", index);
+  };
+
   const handleDrop = (e, droppedOnElementIndex) => {
     const droppedElementIndex = e.dataTransfer.getData("text/plain");
 
     swapColumns(droppedElementIndex, droppedOnElementIndex);
-  };
-
-  const isRowSelected = (row) => {
-    try {
-      return selectedRows.findIndex((r) => r.id === row.id) >= 0 ? true : false;
-    } catch (error) {
-      return false;
-    }
   };
 
   return (
