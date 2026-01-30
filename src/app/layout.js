@@ -1,10 +1,13 @@
-"use client";
 import Providers from "@/theme/Providers";
 
 // styles
-import "./globals.css";
+import "@/app/globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+export const metadata = {
+  title: "Ghalla Mandi",
+  description: "Ghalla Mandi app to manage your accouts",
+};
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-scroll-behavior="smooth">

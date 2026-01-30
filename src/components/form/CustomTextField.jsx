@@ -11,14 +11,18 @@ function CustomTextField({
   error = false,
   helperText = "",
   slotProps = {},
+  size = "small",
+  color = "primary",
 }) {
   return (
     <TextField
+      color={color}
       type={type}
       label={label}
+      size={size}
+      error={error}
       required={required}
       placeholder={placeholder}
-      error={error}
       helperText={helperText}
       slotProps={slotProps}
     />

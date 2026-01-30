@@ -7,6 +7,7 @@ const StyledHeader = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   width: "100%",
+  minHeight: theme.mixins.toolbar.height,
   ...theme.mixins.toolbar,
 }));
 

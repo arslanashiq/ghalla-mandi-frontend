@@ -1,7 +1,5 @@
 import React from "react";
 
-async function RegisterPage() {
+export default function Page() {
   return <div>RegisterPage</div>;
 }
-
-export default RegisterPage;

@@ -6,6 +6,13 @@ const theme = createTheme({
   palette: { mode: "dark" },
 
   components: {
+    MuiTypography: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          color: theme.palette.text.primary,
+        }),
+      },
+    },
     MuiTextField: {
       defaultProps: {
         size: "small",

@@ -1,18 +1,12 @@
 "use client";
-
 import React from "react";
-import {
-  Card,
-  CardContent,
-  Typography,
-  TextField,
-  Button,
-  Box,
-} from "@mui/material";
 import { useRouter } from "next/navigation";
+import { Card, CardContent, Typography, Button, Box } from "@mui/material";
+// components
 import CustomTextField from "@/components/form/CustomTextField";
+import PageContainer from "@/components/Layout/PageContainer";
 
-export default function LoginPage() {
+function LoginPage() {
   const router = useRouter();
 
   const handleLogin = (e) => {
@@ -20,13 +14,11 @@ export default function LoginPage() {
     router.replace("/home");
   };
   return (
-    <Box
+    <PageContainer
       sx={{
-        height: "100vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        px: 2,
       }}
     >
       <Card
@@ -67,6 +59,8 @@ export default function LoginPage() {
           </Box>
         </CardContent>
       </Card>
-    </Box>
+    </PageContainer>
   );
 }
+
+export default LoginPage;

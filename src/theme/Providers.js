@@ -11,6 +11,7 @@ import lightBackground from "@/assets/background-light.svg";
 // components
 import theme from "./theme";
 import createEmotionCache from "./createEmotionCache";
+import { Padding } from "@mui/icons-material";
 
 //
 const clientSideEmotionCache = createEmotionCache();
@@ -28,7 +29,7 @@ export default function Providers({ children }) {
             backgroundImage: `url(${isDarkMode ? darkBackground.src : lightBackground.src})`,
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center top",
-            backgroundSize: "cover", // or "contain" depending on the effect
+            backgroundSize: "cover",
             minHeight: "100vh",
             height: "100%",
           }}

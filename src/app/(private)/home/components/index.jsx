@@ -1,49 +1,34 @@
 "use client";
-
-import React from "react";
-import {
-  Box,
-  Grid,
-  Card,
-  CardContent,
-  Typography,
-  Button,
-  useTheme,
-} from "@mui/material";
-
 import { useRouter } from "next/navigation";
-import { DEFAULT_APPS } from "@/utilities/constants";
-import StyledHeader from "@/components/Layout/StyledHeader";
+import { Grid, Card, Typography } from "@mui/material";
+// components
 import NavBar from "@/components/Layout/NavBar";
-
-export default function AppsHomePage() {
+import PageContainer from "@/components/Layout/PageContainer";
+// hooks
+import useAppRoutes from "@/hooks/useAppRoutes";
+function HomePage() {
   const router = useRouter();
 
-  const theme = useTheme();
+  const { appRoutes } = useAppRoutes();
   return (
-    <Box
-      sx={{
-        p: 4,
-        minHeight: "100%",
-      }}
-    >
+    <PageContainer>
       <NavBar title="Home" />
 
       <Grid container spacing={4} justifyContent="center">
-        {DEFAULT_APPS.map((app, index) => (
+        {appRoutes.map((app, index) => (
           <Grid key={index}>
             <Card
               sx={{
-                backgroundColor: "rgba(255, 255, 255, 0.05)",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
                 p: 2,
                 width: 120,
+                display: "flex",
                 cursor: "pointer",
+                alignItems: "center",
+                flexDirection: "column",
+                justifyContent: "center",
                 transition: "transform 0.2s",
                 "&:hover": { transform: "scale(1.05)" },
+                backgroundColor: "rgba(255, 255, 255, 0.05)",
               }}
               onClick={() => router.push(app.route)}
             >
@@ -60,6 +45,8 @@ export default function AppsHomePage() {
           </Grid>
         ))}
       </Grid>
-    </Box>
+    </PageContainer>
   );
 }
+
+export default HomePage;
